@@ -1,0 +1,81 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <br><br>
+    <h2 class="text-white">Editar Proyecto</h2>
+    <div class="booking-form-body text-white">
+        <!-- Formulario de edición -->
+        <form id="form" class="custom-form booking-form" action="{{ url_for('router.editarProyecto', id=proyecto['id']) }}" method="POST" role="form">
+            <input type="hidden" name="id" value="{{ proyecto['id'] }}">
+
+            <!-- Campo ID (oculto) -->
+            <div class="form-group row">
+                <label for="id" class="col-lg-2 col-form-label">ID:</label>
+                <div class="col-lg-4">
+                    <input type="text" value="{{ proyecto['id'] }}" name="id" id="id" class="form-control" readonly>
+                </div>
+            </div>
+
+            <!-- Campo Nombre del Proyecto -->
+            <div class="form-group row">
+                <label for="nombre" class="col-lg-2 col-form-label">Nombre del Proyecto:</label>
+                <div class="col-lg-4">
+                    <input type="text" value="{{ proyecto['nombre'] }}" name="nombre" id="nombre" class="form-control" placeholder="Nombre del Proyecto" required>
+                </div>
+            </div>
+
+            <!-- Campo Fecha de Inicio -->
+            <div class="form-group row">
+                <label for="fecha_inicio" class="col-lg-2 col-form-label">Fecha de Inicio:</label>
+                <div class="col-lg-4">
+                    <input type="date" value="{{ proyecto['fechaInicio'] }}" name="fecha_inicio" id="fecha_inicio" class="form-control" required>
+                </div>
+            </div>
+
+            <!-- Campo Fecha de Fin -->
+            <div class="form-group row">
+                <label for="fecha_fin" class="col-lg-2 col-form-label">Fecha de Fin:</label>
+                <div class="col-lg-4">
+                    <input type="date" value="{{ proyecto['fechaFin'] }}" name="fecha_fin" id="fecha_fin" class="form-control" required>
+                </div>
+            </div>
+
+            <!-- Campo Estado -->
+            <div class="form-group row">
+                <label for="estado" class="col-lg-2 col-form-label">Estado:</label>
+                <div class="col-lg-4">
+                    <input type="text" value="{{ proyecto['estado'] }}" name="estado" id="estado" class="form-control" placeholder="Estado del Proyecto" required>
+                </div>
+            </div>
+
+            <!-- Campo Inversionista -->
+            <div class="form-group row">
+                <label for="inversionista" class="col-lg-2 col-form-label">Inversionista:</label>
+                <div class="col-lg-4">
+                    <select name="inversionista" id="inversionista" class="form-control">
+                        <option value="{{ proyecto['inversionista']['id'] }}" selected>{{ proyecto['inversionista']['nombre'] }}</option>
+                        {% for inversionista in inversionistas %}
+                            <option value="{{ inversionista['id'] }}">{{ inversionista['nombre'] }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <!-- Mostrar mensajes de error si existen -->
+            {% if error_message %}
+            <div class="alert alert-danger">
+                {{ error_message }}
+            </div>
+            {% endif %}
+
+            <!-- Botón de guardar -->
+            <div class="form-group row">
+                <div class="col-lg-6 offset-lg-3">
+                    <button id="boton" type="submit" class="btn btn-success btn-block">Guardar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

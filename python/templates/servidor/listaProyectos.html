@@ -1,0 +1,36 @@
+{% extends "index.html" %}
+
+{% block content %}
+<h2 class="text-white">Lista de Proyectos</h2>
+
+<div class="booking-form-body mt-5 mb-5">
+    <table id="tabla" class="table text-white">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Fecha de Inicio</th>
+                <th>Fecha de Fin</th>
+                <th>Estado</th>
+                <th>Inversionista</th>
+                <th>Modificar</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            {% for proyecto in lista %}
+                <tr>
+                    <td>{{ proyecto.id }}</td>
+                    <td>{{ proyecto.nombre }}</td>
+                    <td>{{ proyecto.fechaInicio }}</td>
+                    <td>{{ proyecto.fechaFin }}</td>
+                    <td>{{ proyecto.estado }}</td>
+                    <td>{{ proyecto.inversionista.nombre }}</td>  <!-- Muestra el nombre del inversionista -->
+                    <td><a href="/servidor/proyecto/editar/{{ proyecto.id }}" class="btn btn-info">EDITAR</a></td>
+                   
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,124 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div id="booktable" class="contact">
+    <div class="container">
+        <div class="row">
+            <!-- Ventanilla 1 -->
+            <div class="col-md-4">
+                <form class="header-form" action="/servidor/guardar" method="post" role="form">
+                    {% csrf_token %}
+                    <div class="head">Ventanilla 1</div>
+                    <div class="body">
+                        <!-- Campos ocultos para item.id, item.nombre, item.dni -->
+                        <input type="hidden" name="id" value="{{ item.id }}">
+                        <input type="hidden" name="nombre" value="{{ item.nombre }}">
+                        <input type="hidden" name="dni" value="{{ item.dni }}">
+                        <input type="hidden" name="monto" value="{{ item.monto }}">
+
+                        <div class="form-group">
+                            <input type="text" name="tiempo" class="form-control" placeholder="Tiempo">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="motivo" class="form-control" placeholder="Motivo">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="fecha" class="form-control" placeholder="Fecha dd/mm/aa">
+                        </div>
+                        <div class="form-group">
+                            <select name="calificacion" id="calificacion1" class="form-control">
+                                <optgroup label="Calificación">
+                                    <option value="MALO">MALO</option>
+                                    <option value="BUENO">BUENO</option>
+                                    <option value="REGULAR">REGULAR</option>
+                                    <option value="MUY BIEN">MUY BUENO</option>
+                                    <option value="EXCELENTE">EXCELENTE</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <button class="btn btn-primary btn-block">Registrar</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Ventanilla 2 -->
+            <div class="col-md-4">
+                <form class="header-form" action="/servidor/guardar" method="post" role="form">
+                    {% csrf_token %}
+                    <div class="head">Ventanilla 2</div>
+                    <div class="body">
+                        <!-- Campos ocultos para item.id, item.nombre, item.dni -->
+                        <input type="hidden" name="id" value="{{ item.id }}">
+                        <input type="hidden" name="nombre" value="{{ item.nombre }}">
+                        <input type="hidden" name="dni" value="{{ item.dni }}">
+
+                        <div class="form-group">
+                            <input type="text" name="tiempo" class="form-control" placeholder="Tiempo">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="motivo" class="form-control" placeholder="Motivo">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="fecha" class="form-control" placeholder="Fecha dd/mm/aa">
+                        </div>
+                        <div class="form-group">
+                            <select name="calificacion" id="calificacion2" class="form-control">
+                                <optgroup label="Calificación">
+                                    <option value="MALO">MALO</option>
+                                    <option value="BUENO">BUENO</option>
+                                    <option value="REGULAR">REGULAR</option>
+                                    <option value="MUY BIEN">MUY BUENO</option>
+                                    <option value="EXCELENTE">EXCELENTE</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <button class="btn btn-primary btn-block">Registrar</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Ventanilla 3 -->
+            <div class="col-md-4">
+                <form class="header-form" action="/servidor/guardar" method="post" role="form">
+                    {% csrf_token %}
+                    <div class="head">Ventanilla 3</div>
+                    <div class="body">
+                        <!-- Campos ocultos para item.id, item.nombre, item.dni -->
+                        <input type="hidden" name="id" value="{{ item.id }}">
+                        <input type="hidden" name="nombre" value="{{ item.nombre }}">
+                        <input type="hidden" name="dni" value="{{ item.dni }}">
+
+                        <div class="form-group">
+                            <input type="text" name="tiempo" class="form-control" placeholder="Tiempo">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="motivo" class="form-control" placeholder="Motivo">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="fecha" class="form-control" placeholder="Fecha dd/mm/aa">
+                        </div>
+                        <div class="form-group">
+                            <select name="calificacion" id="calificacion3" class="form-control">
+                                <optgroup label="Calificación">
+                                    <option value="MALO">MALO</option>
+                                    <option value="BUENO">BUENO</option>
+                                    <option value="REGULAR">REGULAR</option>
+                                    <option value="MUY BIEN">MUY BUENO</option>
+                                    <option value="EXCELENTE">EXCELENTE</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <button class="btn btn-primary btn-block">Registrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

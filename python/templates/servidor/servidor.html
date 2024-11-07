@@ -1,0 +1,47 @@
+{% extends "index.html" %}
+
+{% block content %}
+<h2 class="text-white"> Lista de Inversionista</h2>
+<div class="booking-form-body mt-5 mb-5">
+    <table id="tabla" class="table text-white">
+        <thead>
+            <tr>
+                <th>Nro</th>
+                <th>DNI</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Monto</th>
+                <th>Modificar</th>
+                <th>Atenciones</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            {% for item in lista %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.dni }}</td>
+                    <td>{{ item.nombre }}</td>
+                    <td>{{ item.apellido }}</td> <!-- Corrige 'apelllido' a 'apellido' -->
+                    <td>{{ item.montoI }}</td> <!-- Asegúrate de que el campo sea 'montoI' o lo que hayas definido en tu backend -->
+
+                    <td><a href="/servidor/modificarS/{{ item.id }}" class="btn btn-info">Modificar</a></td>
+                    <td>
+                        <form action="/servidor/eliminarS" method="post">
+                            <input type="hidden" name="id" value="{{ item.id }}">
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <a href="/servidor/crearS" class="btn btn-success btn-block">Crear Inversionista</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

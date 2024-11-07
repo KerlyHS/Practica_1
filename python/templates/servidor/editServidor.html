@@ -1,0 +1,56 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <br><br>
+    <h2 class="text-white">Editar Inversionista</h2>
+    <div class="booking-form-body text-white">
+        <!-- Formulario de edición -->
+        <form id="form" class="custom-form booking-form" action="{{ url_for('router.editarInversionista', id=inversionista['id']) }}" method="POST" role="form">
+            <input type="hidden" name="id" value="{{ inversionista['id'] }}">
+
+            <!-- Campo DNI -->
+            <div class="form-group row">
+                <label for="dni" class="col-lg-2 col-form-label">DNI:</label>
+                <div class="col-lg-4">
+                    <input type="text" value="{{ inversionista['dni'] }}" name="dni" id="dni" class="form-control" placeholder="DNI" required>
+                </div>
+
+                <!-- Campo Nombre -->
+                <label for="nombre" class="col-lg-2 col-form-label">Nombre:</label>
+                <div class="col-lg-4">
+                    <input type="text" value="{{ inversionista['nombre'] }}" name="nombre" id="nombre" class="form-control" placeholder="Nombre" required>
+                </div>
+            </div>
+
+            <!-- Campo Apellido -->
+            <div class="form-group row">
+                <label for="apellido" class="col-lg-2 col-form-label">Apellido:</label>
+                <div class="col-lg-4">
+                    <input type="text" value="{{ inversionista['apellido'] }}" name="apellido" id="apellido" class="form-control" placeholder="Apellido" required>
+                </div>
+
+                <!-- Campo Monto Invertido -->
+                <label for="montoI" class="col-lg-2 col-form-label">Monto Invertido:</label>
+                <div class="col-lg-4">
+                    <input type="text" value="{{ inversionista['montoI'] }}" name="montoI" id="montoI" class="form-control" placeholder="Monto" required>
+                </div>
+            </div>
+
+            <!-- Mostrar mensajes de error si existen -->
+            {% if error_message %}
+            <div class="alert alert-danger">
+                {{ error_message }}
+            </div>
+            {% endif %}
+
+            <!-- Botón de guardar -->
+            <div class="form-group row">
+                <div class="col-lg-6 offset-lg-3">
+                    <button id="boton" type="submit" class="btn btn-success btn-block">Guardar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
